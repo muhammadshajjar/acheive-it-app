@@ -1,0 +1,28 @@
+.hero {
+  max-width: 807px;
+  text-align: center;
+  letter-spacing: 0.7px;
+  margin: 120px auto 0 auto;
+}
+.hero h1 {
+  font-size: 65px;
+  font-weight: var(--fw-bold);
+  color: var(--primary-headings-purple);
+  line-height: 1.2;
+}
+.hero span {
+  background: linear-gradient(rgba(207, 34, 93, 1), rgba(79, 35, 95, 0.74));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero p {
+  font-size: 17px;
+  font-weight: var(--fw-medium);
+  width: 80%;
+  margin: 20px auto;
+}
+
+.hero__btn {
+  font-size: 18px;
+  margin-top: 10px;
+}

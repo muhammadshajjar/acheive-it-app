@@ -1,0 +1,11 @@
+.btn {
+  background-color: var(--primary-cta-redishpink);
+  padding: 10px 20px;
+  border: none;
+  color: var(--primary-text-white);
+  border-radius: 48px;
+  font-weight: var(--fw-medium);
+  letter-spacing: 1.2px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}

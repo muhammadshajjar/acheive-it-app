@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+.header__nav--cta {
+  display: flex;
+}
+
+.header__logo {
+  width: 250px;
+  height: 70px;
+}
+
+.header__nav--cta a {
+  font-weight: var(--fw-medium);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.header__nav--login {
+  color: var(--primay-text-black);
+}
+.header__nav--signup {
+  color: var(--primary-cta-redishpink);
+  margin-left: 20px;
+}

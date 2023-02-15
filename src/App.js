@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Header from "./Components/Header";
+import Authentication from "./Pages/Authentication";
+import Home from "./Pages/Home";
+import DashboardRoot from "./Pages/DashboardRoot";
+import DashboardHome from "./Pages/DashboardHome";
+import DashboardCreateProject from "./Pages/DashboardCreateProject";
+import AddProfileInfo from "./Components/AddProfileInfo";
+import AddTeamMember from "./Components/AddTeamMember";
+import AddTodo from "./Components/AddTodo";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const routes = createBrowserRouter([
+  {
+    path: "/",
+    element: <Header />,
+    children: [{ index: true, element: <Home /> }],
+  },
+  {
+    path: "auth",
+    element: <Authentication />,
+  },
+  {
+    path: "admin",
+    element: <DashboardRoot />,
+    children: [
+      {
+        index: true,
+        element: <DashboardHome />,
+      },
+      {
+        path: "createproject",
+        element: <DashboardCreateProject />,
+        children: [
+          { index: true, element: <AddProfileInfo /> },
+          { path: "add-team", element: <AddTeamMember /> },
+          { path: "add-todo", element: <AddTodo /> },
+        ],
+      },
+    ],
+  },
+]);
+const App = () => {
+  return <RouterProvider router={routes}></RouterProvider>;
+};
 
 export default App;
