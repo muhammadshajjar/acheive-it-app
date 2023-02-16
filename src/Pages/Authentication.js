@@ -59,14 +59,16 @@ const Authentication = () => {
         userEmail,
         userPassword
       );
+
       try {
-        await addDoc(collection(db, "users"), {
+        const docRef = await addDoc(collection(db, "newUsers"), {
           userName: generateUserName(userEmail),
           name: userName,
           email: user.email,
           uid: user.uid,
           profileImg: user?.photoURL || null,
         });
+        console.log(docRef);
       } catch (err) {
         alert(err);
         setIsLoading(false);
@@ -105,15 +107,14 @@ const Authentication = () => {
     }
     setIsLoading(false);
   };
-
   const signUpWithGoogleHandler = async (e) => {
     e.preventDefault();
     try {
       const { user } = await signInWithPopup(auth, provider);
 
       try {
-        await addDoc(collection(db, "users"), {
-          userName: generateUserName(userEmail),
+        await addDoc(collection(db, "newUsers"), {
+          userName: generateUserName(user.email),
           name: user.displayName,
           email: user.email,
           uid: user.uid,
@@ -129,7 +130,6 @@ const Authentication = () => {
       setIsLoading(false);
     }
   };
-
   const signInWithGoogleHandler = async (e) => {
     e.preventDefault();
     try {
@@ -229,7 +229,7 @@ const Authentication = () => {
               onClick={signInWithGoogleHandler}
             >
               <img src={googleIcon} alt="google company icon" />
-              <span>Sign up With Google</span>
+              <span>Sign in With Google</span>
             </button>
           )}
           {signUpForm && (

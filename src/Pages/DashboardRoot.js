@@ -53,7 +53,7 @@ const DashboardRoot = () => {
     const getUsersDataFromFireStore = async () => {
       setIsLoading(true);
       try {
-        const userRef = collection(db, "users");
+        const userRef = collection(db, "newUsers");
         const q = query(userRef, where("uid", "==", user?.uid));
         const usersSnapShot = await getDocs(q);
         usersSnapShot.forEach((doc) => {
