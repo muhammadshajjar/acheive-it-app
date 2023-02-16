@@ -17,7 +17,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, getDocs, collection, where, query } from "firebase/firestore";
 
 //helper
 import { generateUserName } from "../Helper/generateUserName";
@@ -111,7 +111,11 @@ const Authentication = () => {
     e.preventDefault();
     try {
       const { user } = await signInWithPopup(auth, provider);
-
+      console.log(user.email);
+      const userRef = collection(db, "newUsers");
+      const q = query(userRef, where("uid", "==", user?.uid));
+      const usersSnapShot = await getDocs(q);
+      console.log(usersSnapShot);
       try {
         await addDoc(collection(db, "newUsers"), {
           userName: generateUserName(user.email),

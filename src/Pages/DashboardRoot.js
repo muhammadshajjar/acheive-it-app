@@ -38,6 +38,7 @@ const DashboardRoot = () => {
   const [loader, isLoading, setIsLoading] = useLoader();
 
   const user = auth?.currentUser;
+  // console.log(user);
 
   //on reloading the page, the user gets undefined that's why redirect to authentication page
 
