@@ -107,6 +107,9 @@ const Authentication = () => {
     }
     setIsLoading(false);
   };
+
+  // apply conditions so that multiple data cant be added to firestore
+  // trying to get data from store and check if the userId is already added to firestore then navigate else add them
   const signUpWithGoogleHandler = async (e) => {
     e.preventDefault();
     try {
@@ -134,6 +137,8 @@ const Authentication = () => {
       setIsLoading(false);
     }
   };
+
+  // signing In and Signing Up both creates multiple newUsers bucket
   const signInWithGoogleHandler = async (e) => {
     e.preventDefault();
     try {
