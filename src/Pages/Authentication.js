@@ -110,40 +110,30 @@ const Authentication = () => {
 
   // apply conditions so that multiple data cant be added to firestore
   // trying to get data from store and check if the userId is already added to firestore then navigate else add them
-  const signUpWithGoogleHandler = async (e) => {
+  const authenticateWithGoogle = async (e) => {
     e.preventDefault();
     try {
       const { user } = await signInWithPopup(auth, provider);
-      console.log(user.email);
       const userRef = collection(db, "newUsers");
       const q = query(userRef, where("uid", "==", user?.uid));
       const usersSnapShot = await getDocs(q);
-      console.log(usersSnapShot);
-      try {
-        await addDoc(collection(db, "newUsers"), {
-          userName: generateUserName(user.email),
-          name: user.displayName,
-          email: user.email,
-          uid: user.uid,
-          profileImg: user.photoURL,
-        });
-      } catch (err) {
-        alert(err);
-        setIsLoading(false);
+      if (usersSnapShot.empty) {
+        console.log("No users exists already");
+        try {
+          await addDoc(collection(db, "newUsers"), {
+            userName: generateUserName(user.email),
+            name: user.displayName,
+            email: user.email,
+            uid: user.uid,
+            profileImg: user.photoURL,
+          });
+          navigate("/admin");
+        } catch (err) {
+          alert(err);
+        }
+      } else {
+        navigate("/admin");
       }
-      navigate("/admin");
-    } catch (err) {
-      alert(err);
-      setIsLoading(false);
-    }
-  };
-
-  // signing In and Signing Up both creates multiple newUsers bucket
-  const signInWithGoogleHandler = async (e) => {
-    e.preventDefault();
-    try {
-      await signInWithPopup(auth, provider);
-      navigate("/admin");
     } catch (err) {
       alert(err);
       setIsLoading(false);
@@ -224,32 +214,25 @@ const Authentication = () => {
               Sign in
             </button>
           )}
+
           {signUpForm && (
             <button
               className="form__btn form__btn--signin"
               onClick={signUpHandler}
             >
-              Sign up
+              Sign Up
             </button>
           )}
           {!signUpForm && (
             <button
               className="form__btn form__btn--google"
-              onClick={signInWithGoogleHandler}
+              onClick={authenticateWithGoogle}
             >
               <img src={googleIcon} alt="google company icon" />
               <span>Sign in With Google</span>
             </button>
           )}
-          {signUpForm && (
-            <button
-              className="form__btn form__btn--google"
-              onClick={signUpWithGoogleHandler}
-            >
-              <img src={googleIcon} alt="google company icon" />
-              <span>Sign up With Google</span>
-            </button>
-          )}
+
           <p className="form__signup">
             Don’t have an Account?{" "}
             {!signUpForm && (
