@@ -1,0 +1,24 @@
+.message {
+  max-width: 397px;
+  margin: 0 auto;
+  text-align: center;
+}
+.message h3 {
+  font-size: 27px;
+  margin-bottom: 10px;
+}
+.message p {
+  margin: 20px 0;
+}
+.prayer-secondary {
+  background-color: transparent;
+  border: 2px solid var(--primary-cta-redishpink);
+  color: var(--primary-cta-redishpink);
+  margin-left: 10px;
+}
+
+.counter {
+  color: var(--primary-cta-redishpink);
+  display: block;
+  margin-top: 14px;
+}
