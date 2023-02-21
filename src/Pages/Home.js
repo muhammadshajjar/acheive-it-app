@@ -9,12 +9,12 @@ import appPrototypes from "../Assets/appdesign.png";
 
 import getFromAppStore from "../Assets/getfromappstore.png";
 import getFromPlayStore from "../Assets/getfromplaystore.png";
-import mailBoxIllustration from "../Assets/mailbox.png";
 
 import { AiFillNotification } from "react-icons/ai";
 import { MdManageAccounts } from "react-icons/md";
 import { FaTasks } from "react-icons/fa";
 import Footer from "../Components/Footer";
+import NewsLetter from "../Components/NewsLetter";
 
 const Home = () => {
   return (
@@ -87,31 +87,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="container">
-        <div className="newsletter">
-          <div className="newsletter__img">
-            <img
-              src={mailBoxIllustration}
-              alt="illustration describing mailbox"
-            />
-          </div>
-          <div className="newsletter__content">
-            <h4>Subscribe to our Newsletter</h4>
-            <p>
-              Be the first to know about our new products, services, and
-              upcoming events by subscribing to our newsletter
-            </p>
-            <div className="newsletter__content--sub">
-              <input
-                type="email"
-                name="newsletterEmail"
-                placeholder="Enter your email"
-              />
-              <button>Subscribe</button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <NewsLetter />
       <Footer />
     </main>
   );
