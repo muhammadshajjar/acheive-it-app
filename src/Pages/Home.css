@@ -1,4 +1,4 @@
-h3 {
+.home__subheading {
   font-size: 44px;
   font-weight: var(--fw-bold);
   color: var(--primary-headings-purple);
@@ -104,7 +104,7 @@ h3 {
     width: 194px;
     height: 53px;
   }
-  h3 {
+  .home__subheading {
     font-size: 32px;
   }
   a {
@@ -122,6 +122,9 @@ h3 {
   }
   .banner {
     margin: 80px 0;
+  }
+  .features {
+    padding: 50px 30px;
   }
   .features__list h4 {
     font-size: 19px;

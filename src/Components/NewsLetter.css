@@ -49,4 +49,12 @@
   .newsletter__content {
     width: 100%;
   }
+  .newsletter__content input {
+    margin-bottom: 10px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .newsletter__content input {
+    width: 100%;
+  }
 }

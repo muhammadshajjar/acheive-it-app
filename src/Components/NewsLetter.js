@@ -16,7 +16,7 @@ const NewsLetter = () => {
   const [loader, isLoading, setIsLoading] = useLoader();
   const form = useRef();
 
-  const emailSubmitHandler = (e) => {
+  const emailSubmitHandler = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, API_KEY).then(

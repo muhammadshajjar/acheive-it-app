@@ -44,7 +44,7 @@ const Home = () => {
 
       <section className="container">
         <div className="features">
-          <h3>Our Features</h3>
+          <h3 className="home__subheading">Our Features</h3>
           <p>Manage projects like a pro with our intuitive features</p>
           <div className="features__list">
             <div>
@@ -73,7 +73,7 @@ const Home = () => {
       </section>
       <section className="container">
         <div className="app">
-          <h3>App Comming Soon</h3>
+          <h3 className="home__subheading">App Comming Soon</h3>
           <div className="app__protypes">
             <img src={appPrototypes} />
           </div>
