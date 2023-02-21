@@ -68,8 +68,6 @@ const PrayerTime = () => {
   }, [hourChange]);
 
   useEffect(() => {
-    console.log(currentTime);
-
     for (const key in azaanTimings) {
       if (currentTime === azaanTimings[key]) {
         setCurrentPrayerName(key);
