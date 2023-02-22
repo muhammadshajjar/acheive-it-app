@@ -30,6 +30,7 @@ import {
 import { auth, db } from "../firebase-config";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { signOut } from "firebase/auth";
+import PrayerTime from "../Components/PrayerTime";
 
 const DashboardRoot = () => {
   const navigate = useNavigate();
@@ -68,28 +69,6 @@ const DashboardRoot = () => {
     getUsersDataFromFireStore();
   }, []);
 
-  const currentUserName = (
-    <p>{currentUserData.userName ? currentUserData.userName : `@username`}</p>
-  );
-
-  const currentUserProfileImage = (
-    <img
-      src={
-        currentUserData.profileImg ? currentUserData.profileImg : userProfile
-      }
-      alt="user profile"
-    />
-  );
-
-  const currentUserDisplayName = (
-    <h3>{currentUserData.name ? currentUserData.name : `User Name`}</h3>
-  );
-
-  const userProfileData = {
-    currentUserName,
-    currentUserProfileImage,
-    currentUserDisplayName,
-  };
   const showProfileCardHandler = () => {
     setShowProfileCart((preveState) => !preveState);
   };
@@ -179,6 +158,7 @@ const DashboardRoot = () => {
           )}
         </div>
       </div>
+      <PrayerTime />
     </>
   );
 };

@@ -3,6 +3,8 @@ import React from "react";
 import "./Home.css";
 
 import Button from "../UI/Button";
+import Modal from "../UI/Modal";
+import PrayerTime from "../Components/PrayerTime";
 const Home = () => {
   return (
     <main>
