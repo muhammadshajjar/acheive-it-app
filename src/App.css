@@ -48,3 +48,6 @@ a {
   width: 95%;
   margin: 0 auto;
 }
+p {
+  letter-spacing: 0.07em;
+}

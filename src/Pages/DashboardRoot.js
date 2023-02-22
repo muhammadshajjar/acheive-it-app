@@ -10,7 +10,7 @@ import ProfileModal from "../Components/ProfileModal";
 import Profile from "../Components/Profile";
 
 //assests
-import logoSloganLess from "../Assets/Logowithslogan.png";
+import logoSloganLess from "../Assets/Logosloganless.png";
 import shaniIllustration from "../Assets/shani.png";
 import userProfile from "../Assets/user.jpg";
 

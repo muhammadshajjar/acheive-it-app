@@ -1,0 +1,40 @@
+.footer {
+  margin-top: 220px;
+  background: linear-gradient(
+    152.02deg,
+    rgba(207, 34, 93, 0.28) 12.52%,
+    rgba(142, 23, 166, 0.32) 120.13%
+  );
+  padding-top: 66px;
+}
+.footer__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.footer__content img {
+  height: 65px;
+  width: 260px;
+  cursor: pointer;
+}
+.footer__content--links a {
+  font-weight: var(--fw-medium);
+  display: block;
+  margin-top: 10px;
+}
+.footer__content--copyright {
+  margin: 25px 0;
+}
+
+.attribution {
+  padding-bottom: 10px;
+  text-align: right;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.attribution span {
+  color: var(--primary-cta-redishpink);
+  font-weight: var(--fw-bold);
+}
