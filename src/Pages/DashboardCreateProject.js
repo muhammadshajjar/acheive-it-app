@@ -4,7 +4,7 @@ import Button from "../UI/Button";
 const DashboardCreateProject = () => {
   return (
     <div>
-      DashboardCreateProject
+      <h1>Create New Project</h1>
       <Outlet />
     </div>
   );
