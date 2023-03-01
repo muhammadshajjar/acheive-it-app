@@ -1,0 +1,31 @@
+.todo-information {
+  border: 1px solid rgba(217, 217, 217, 0.62);
+  border-radius: 8px;
+  max-width: 503px;
+  margin: 0 auto;
+  padding: 36px 31px 20px 31px;
+}
+
+.todo-information h2 {
+  font-size: 24px;
+  line-height: 26px;
+  text-align: center;
+  font-weight: var(--fw-bold);
+  margin-bottom: 14px;
+}
+
+.todo-information label {
+  font-size: 15px;
+  line-height: 26px;
+  margin-bottom: 8px;
+  display: block;
+  font-weight: var(--fw-medium);
+}
+
+.todo-information input {
+  max-width: 309px;
+  width: 100%;
+  border-radius: 9px;
+  padding: 8px 12px;
+  border: 1px solid #d9d9d9;
+}

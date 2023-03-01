@@ -2,8 +2,18 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./AddProfileInfo.css";
 import Button from "../UI/Button";
-const AddProfileInfo = () => {
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addItems } from "../store/project-slice";
+
+
+const AddProfileInfo = ({ gotoNextTab }) => {
+  console.log(gotoNextTab);
+  const navigate = useNavigate();
   const [profile, setProfile] = useState({});
+
+  const dispatch = useDispatch();
+
   const changeHandler = (e) => {
     setProfile({
       ...profile,
@@ -13,7 +23,7 @@ const AddProfileInfo = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(profile);
+    dispatch(addItems(profile));
   };
   return (
     <div className="project-information">
@@ -21,19 +31,21 @@ const AddProfileInfo = () => {
       <form onSubmit={submitHandler}>
         <label htmlFor="p-name">Project Name</label>
         <input
+          required
           type="text"
           placeholder="Enter Project Name"
-          name="pName"
+          name="projectName"
           onChange={changeHandler}
         />
         <label htmlFor="p-desc">Project Description</label>
         <textarea
+          required
           type="text"
           placeholder="Some more information about project"
-          name="pDesc"
+          name="projectDesc"
           onChange={changeHandler}
         />
-        <Button>Add</Button>
+        <Button onClick={() => gotoNextTab("MEMBERS")}>Add</Button>
       </form>
       <Link to="/admin/createproject/add-team" style={{ color: "red" }}>
         Forward

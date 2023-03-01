@@ -2,16 +2,21 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Button from "../UI/Button";
 import "./AddTeamMember.css";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { addItems } from "../store/project-slice";
 
 // firebase part
 import { db } from "../firebase-config";
-import { collection, getDocs, query } from "firebase/firestore";
+import { setDoc, collection, getDocs, query, addDoc } from "firebase/firestore";
 
 const AddTeamMember = () => {
+  const navigate = useNavigate();
   const [members, setMembers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [dataa, setDataa] = useState([]);
-  const [isSelected, setIsSelected] = useState(false);
+
+  const dispatch = useDispatch();
 
   // getting user function
   useEffect(() => {
@@ -46,7 +51,6 @@ const AddTeamMember = () => {
     setDataa(dataCopy);
   };
 
-  
   // for searching the user
   const changeHandler = (e) => {
     setSearchTerm(e.target.value);
@@ -61,10 +65,10 @@ const AddTeamMember = () => {
     }
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(dataa)
-    console.log(e);
+    dispatch(addItems(dataa));
+    navigate("/admin/createproject/add-todo");
   };
 
   return (
