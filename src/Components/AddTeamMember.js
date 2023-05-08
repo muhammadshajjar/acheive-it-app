@@ -10,13 +10,14 @@ import { addItems } from "../store/project-slice";
 import { db } from "../firebase-config";
 import { setDoc, collection, getDocs, query, addDoc } from "firebase/firestore";
 
-const AddTeamMember = () => {
+const AddTeamMember = ({ gotoNextTab }) => {
   const navigate = useNavigate();
   const [members, setMembers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [dataa, setDataa] = useState([]);
 
   const dispatch = useDispatch();
+  const project = useSelector((state) => state.projectDetail.projectDetail);
 
   // getting user function
   useEffect(() => {
@@ -67,8 +68,12 @@ const AddTeamMember = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    dispatch(addItems(dataa));
-    navigate("/admin/createproject/add-todo");
+    dispatch(
+      addItems({
+        member: dataa,
+      })
+    );
+    gotoNextTab("TODOS");
   };
 
   return (
@@ -98,7 +103,6 @@ const AddTeamMember = () => {
                   <div className="check-box">
                     <input
                       type="checkbox"
-                      // onChange={}
                       onChange={(e) => clickHandler(e, user)}
                     />
                   </div>

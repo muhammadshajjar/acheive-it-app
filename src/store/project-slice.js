@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  projectDetail: [],
+  projectDetail: {},
 };
 
 export const projectDetailSlice = createSlice({
@@ -10,17 +10,11 @@ export const projectDetailSlice = createSlice({
   reducers: {
     addItems: (state, action) => {
       const items = action.payload;
-      if (Array.isArray(items)) {
-        return {
-          ...state,
-          projectDetail: [...state.projectDetail, ...items],
-        };
-      } else {
-        return {
-          ...state,
-          projectDetail: [...state.projectDetail, items],
-        };
-      }
+
+      state.projectDetail = {
+        ...state.projectDetail,
+        ...items,
+      };
     },
   },
 });

@@ -6,11 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addItems } from "../store/project-slice";
 
-
 const AddProfileInfo = ({ gotoNextTab }) => {
-  console.log(gotoNextTab);
   const navigate = useNavigate();
-  const [profile, setProfile] = useState({});
+  const [profile, setProfile] = useState();
 
   const dispatch = useDispatch();
 
@@ -24,6 +22,7 @@ const AddProfileInfo = ({ gotoNextTab }) => {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(addItems(profile));
+    gotoNextTab("MEMBERS");
   };
   return (
     <div className="project-information">
@@ -45,8 +44,9 @@ const AddProfileInfo = ({ gotoNextTab }) => {
           name="projectDesc"
           onChange={changeHandler}
         />
-        <Button onClick={() => gotoNextTab("MEMBERS")}>Add</Button>
+        <Button>Add</Button>
       </form>
+
       <Link to="/admin/createproject/add-team" style={{ color: "red" }}>
         Forward
       </Link>

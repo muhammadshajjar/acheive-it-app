@@ -7,14 +7,13 @@ import { addItems } from "../store/project-slice";
 
 //firebase
 import { auth, db } from "../firebase-config";
+import { setDoc, doc } from "firebase/firestore";
+import { async } from "@firebase/util";
 
 const AddTodo = () => {
   const [todo, setTodo] = useState();
-
   const project = useSelector((state) => state.projectDetail.projectDetail);
-
   const dispatch = useDispatch();
-  console.log(project);
 
   const changeHandler = (e) => {
     setTodo({
@@ -22,6 +21,20 @@ const AddTodo = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const clickHandler = async () => {
+    try {
+      const docRef = await setDoc(
+        doc(db, "projectDetails", auth.currentUser.email),
+        { project }
+      );
+      console.log(docRef);
+    } catch (err) {
+      alert(err);
+    }
+    console.log(project);
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(addItems(todo));
@@ -51,6 +64,7 @@ const AddTodo = () => {
       <Link to="/admin/createproject/add-team" style={{ color: "red" }}>
         Back
       </Link>
+      <Button onClick={clickHandler}>Done</Button>
     </div>
   );
 };
